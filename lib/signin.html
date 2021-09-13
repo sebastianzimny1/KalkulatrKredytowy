@@ -1,21 +1,32 @@
-<?php require_once dirname(__FILE__) .'/../config.php';?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Progressus - Free business bootstrap template by GetTemplate</title>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Sign in - Progressus Bootstrap template</title>
 
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="./lib/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./lib/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
 	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="./lib/assets/css/bootstrap-theme.css" media="screen" >
-	<link rel="stylesheet" href="./lib/assets/css/main.css">
-</head>
-<body>
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
+	<link rel="stylesheet" href="assets/css/main.css">
 
-<!-- Fixed navbar -->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
 		<div class="container">
 			<div class="navbar-header">
@@ -25,62 +36,82 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="#">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
+							<li><a href="sidebar-right.html">Right Sidebar</a></li>
 						</ul>
 					</li>
 					<li><a href="contact.html">Contact</a></li>
-					<li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>
+					<li class="active"><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div> 
-	<!-- /.navbar --> 
+	<!-- /.navbar -->
 
-<form action="<?php print(_APP_URL);?>/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
-        <legend>Kalkulator</legend>	
-        <fieldset>
-            <label for="id_x">Kwota: </label>
-            <input id="id_x" type="text" name="x" value="<?php if(isset($x)) print($x); ?>" /><br />
-            <label for="id_op">Oprocentowanie: </label>
-            <select name="op">
-                    <option value="1%">1%</option>
-                    <option value="2%">2%</option>
-                    <option value="3%">3%</option>
-                    <option value="5%">5%</option>
-                    <option value="10%">10%</option>
-	<</select><br />
-	<label for="id_y">Długość spłaty w miesiącach: </label>
-	<input id="id_y" type="text" name="y" value="<?php if(isset($y)) print($y); ?>" /><br />
-	</fieldset>
-        <input type="submit" value="Oblicz" class="pure-button pure-button-primary" />
-</form>	
+	<header id="head" class="secondary"></header>
 
-<?php
-//wyświeltenie listy błędów, jeśli istnieją
-if (isset($messages)) {
-	if (count ( $messages ) > 0) {
-		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #9a1a27; width:300px;">';
-		foreach ( $messages as $key => $msg ) {
-			echo '<li>'.$msg.'</li>';
-		}
-		echo '</ol>';
-	}
-}
-?>
+	<!-- container -->
+	<div class="container">
 
-<?php if (isset($result)){ ?>
-<div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #a9c3e1; width:300px;">
-<?php echo 'Twoja rata będzie wynosić: '.$result; ?>
-</div>
-<?php } ?>
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">User access</li>
+		</ol>
 
-    <footer id="footer" class="top-space">
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Sign in</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">Sign in to your account</h3>
+							<p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="signup.html">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p>
+							<hr>
+							
+							<form>
+								<div class="top-margin">
+									<label>Username/Email <span class="text-danger">*</span></label>
+									<input type="text" class="form-control">
+								</div>
+								<div class="top-margin">
+									<label>Password <span class="text-danger">*</span></label>
+									<input type="password" class="form-control">
+								</div>
+
+								<hr>
+
+								<div class="row">
+									<div class="col-lg-8">
+										<b><a href="">Forgot password?</a></b>
+									</div>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">Sign in</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+			<!-- /Article -->
+
+		</div>
+	</div>	<!-- /container -->
+	
+
+	<footer id="footer" class="top-space">
 
 		<div class="footer1">
 			<div class="container">
@@ -100,7 +131,7 @@ if (isset($messages)) {
 					<div class="col-md-3 widget">
 						<h3 class="widget-title">Follow me</h3>
 						<div class="widget-body">
-							<p class="follow-me-icons">
+							<p class="follow-me-icons clearfix">
 								<a href=""><i class="fa fa-twitter fa-2"></i></a>
 								<a href=""><i class="fa fa-dribbble fa-2"></i></a>
 								<a href=""><i class="fa fa-github fa-2"></i></a>
@@ -148,7 +179,17 @@ if (isset($messages)) {
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
+	</footer>	
+		
 
-	</footer>
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
 </body>
 </html>

@@ -8,7 +8,6 @@ require_once dirname(__FILE__).'/../config.php';
 
 // 1. pobranie parametrów
 
-include _ROOT_PATH.'/app/security/check.php';
 
 function getParams(&$x,&$y,&$operation){
 	$x = isset($_REQUEST['x']) ? $_REQUEST['x'] : null;
@@ -51,7 +50,7 @@ function validate(&$x,&$y,&$operation,&$messages){
 
 // 3. wykonaj zadanie jeśli wszystko w porządku
 function process(&$x,&$y,&$operation,&$messages,&$result){
-    global $role;
+ 
 	
 	//konwersja parametrów na int
 	$x = floatval($x);
@@ -59,13 +58,9 @@ function process(&$x,&$y,&$operation,&$messages,&$result){
 	
 	//wykonanie operacji
 	switch ($operation) {
-		case '1%' :
-                    if ($role == 'admin'){
+		case '1%' :                
 			$result = ($x/$y)+($x/$y)*0.01;
                         $result = round($result,2);
-                    }else {
-				$messages [] = 'Tylko administrator może wybrać 1% !';
-			}
 			break;
 		case '2%' :
 			$result = ($x/$y)+($x/$y)*0.02;
