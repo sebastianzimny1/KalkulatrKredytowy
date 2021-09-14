@@ -3,25 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
     <meta charset="utf-8" />
-    <title>Progressus - Free business bootstrap template by GetTemplate</title>
+    <title>Kalkulatory</title>
 
-	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="./lib/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./lib/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/bootstrap-theme.css" media="screen" >
+    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/main.css">
+            
 
-	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="./lib/assets/css/bootstrap-theme.css" media="screen" >
-	<link rel="stylesheet" href="./lib/assets/css/main.css">
 </head>
-<body>
+<body class="home">
 
-<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+    <div class="navbar navbar-inverse navbar-fixed-top headroom" >
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Progressus HTML5 template"></a>
+                                <a class="navbar-brand" href="index.html"><p>Kalkulatory</p></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
@@ -34,14 +33,24 @@
 							<li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
 						</ul>
 					</li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>
+					<li><a href="contact.html">Contact</a></li>					
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div> 
-	<!-- /.navbar --> 
-
+    
+    <!-- Header -->
+	<header id="head">
+		<div class="container">
+			<div class="row">
+				<h1 class="lead">KALKULATORY</h1>
+				<p class="tagline">Największa ofera kalkulatorów </p>
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+        <!-- Intro -->
+	<div class="container text-center">
 <form action="<?php print(_APP_URL);?>/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
         <legend>Kalkulator</legend>	
         <fieldset>
@@ -58,9 +67,9 @@
 	<label for="id_y">Długość spłaty w miesiącach: </label>
 	<input id="id_y" type="text" name="y" value="<?php if(isset($y)) print($y); ?>" /><br />
 	</fieldset>
-        <input type="submit" value="Oblicz" class="pure-button pure-button-primary" />
+        <input type="submit" value="Oblicz" />
 </form>	
-
+  
 <?php
 //wyświeltenie listy błędów, jeśli istnieją
 if (isset($messages)) {
@@ -75,34 +84,31 @@ if (isset($messages)) {
 ?>
 
 <?php if (isset($result)){ ?>
-<div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #a9c3e1; width:300px;">
+<div style=" border-radius: 5px; background-color: #a9c3e1; width:300px;">
 <?php echo 'Twoja rata będzie wynosić: '.$result; ?>
 </div>
 <?php } ?>
-
-    <footer id="footer" class="top-space">
+ </div> 
+        <footer id="footer" class="top-space">
 
 		<div class="footer1">
 			<div class="container">
 				<div class="row">
 					
 					<div class="col-md-3 widget">
-						<h3 class="widget-title">Contact</h3>
+						<h3 class="widget-title">Kontakt</h3>
 						<div class="widget-body">
-							<p>+234 23 9873237<br>
-								<a href="mailto:#">some.email@somewhere.com</a><br>
+							<p>
 								<br>
-								234 Hidden Pond Road, Ashland City, TN 37015
+								123-45 Sosnowiec, ul.Kalkulatorowa 12, Polska
 							</p>	
 						</div>
 					</div>
 
 					<div class="col-md-3 widget">
-						<h3 class="widget-title">Follow me</h3>
 						<div class="widget-body">
 							<p class="follow-me-icons">
 								<a href=""><i class="fa fa-twitter fa-2"></i></a>
-								<a href=""><i class="fa fa-dribbble fa-2"></i></a>
 								<a href=""><i class="fa fa-github fa-2"></i></a>
 								<a href=""><i class="fa fa-facebook fa-2"></i></a>
 							</p>	
@@ -110,10 +116,10 @@ if (isset($messages)) {
 					</div>
 
 					<div class="col-md-6 widget">
-						<h3 class="widget-title">Text widget</h3>
+						<h3 class="widget-title">kalkulatory</h3>
 						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-							<p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
+							<p>Jesteśmy światowym liderem w kalkulatorach</p>
+							
 						</div>
 					</div>
 
@@ -128,11 +134,8 @@ if (isset($messages)) {
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
-								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+								<a href="#">Strona główna</a> | 
+								<a href="about.html">o nas</a> |					
 							</p>
 						</div>
 					</div>
@@ -140,7 +143,7 @@ if (isset($messages)) {
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right">
-								Copyright &copy; 2014, Your name. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
+								Copyright Sebastian Zimny
 							</p>
 						</div>
 					</div>
@@ -149,6 +152,6 @@ if (isset($messages)) {
 			</div>
 		</div>
 
-	</footer>
+	</footer>	
 </body>
 </html>
