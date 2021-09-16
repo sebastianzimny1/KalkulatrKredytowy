@@ -6,15 +6,14 @@
     <title>Kalkulatory</title>
 
     <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/bootstrap-theme.css" media="screen" >
-    <link rel="stylesheet" href="<?php print(_APP_URL); ?> ../lib/assets/css/main.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/bootstrap-theme.css" media="screen" >
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/main.css">
             
 
 </head>
 <body class="home">
-
     <div class="navbar navbar-inverse navbar-fixed-top headroom" >
 		<div class="container">
 			<div class="navbar-header">
@@ -51,11 +50,12 @@
 	<!-- /Header -->
         <!-- Intro -->
 	<div class="container text-center">
-<form action="<?php print(_APP_URL);?>/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
-        <legend>Kalkulator</legend>	
+<form action="{$conf->app_url}/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
+        <h2>Kalkulator kredytowy</h2>	
+        <br></br>
         <fieldset>
             <label for="id_x">Kwota: </label>
-            <input id="id_x" type="text" name="x" value="<?php if(isset($x)) print($x); ?>" /><br />
+            <input id="id_x" type="text" name="x" value="{$form->x}" /><br />
             <label for="id_op">Oprocentowanie: </label>
             <select name="op">
                     <option value="1%">1%</option>
@@ -65,29 +65,45 @@
                     <option value="10%">10%</option>
 	<</select><br />
 	<label for="id_y">Długość spłaty w miesiącach: </label>
-	<input id="id_y" type="text" name="y" value="<?php if(isset($y)) print($y); ?>" /><br />
+	<input id="id_y" type="text" name="y" value="{$form->x}" /><br />
 	</fieldset>
+            <br></br>
         <input type="submit" value="Oblicz" />
 </form>	
-  
-<?php
-//wyświeltenie listy błędów, jeśli istnieją
-if (isset($messages)) {
-	if (count ( $messages ) > 0) {
-		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #9a1a27; width:300px;">';
-		foreach ( $messages as $key => $msg ) {
-			echo '<li>'.$msg.'</li>';
-		}
-		echo '</ol>';
-	}
-}
-?>
+<div class="messages">
 
-<?php if (isset($result)){ ?>
-<div style=" border-radius: 5px; background-color: #a9c3e1; width:300px;">
-<?php echo 'Twoja rata będzie wynosić: '.$result; ?>
+{* wyświeltenie listy błędów, jeśli istnieją *}
+{if $msgs->isError()}
+	<h4>Wystąpiły błędy: </h4>
+	<ol class="err">
+	{foreach $msgs->getErrors() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{* wyświeltenie listy informacji, jeśli istnieją *}
+{if $msgs->isInfo()}
+	<h4>Informacje: </h4>
+	<ol class="inf">
+	{foreach $msgs->getInfos() as $inf}
+	{strip}
+		<li>{$inf}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if isset($res->result)}
+	<h4>Wynik</h4>
+	<p class="res">
+	{$res->result}
+	</p>
+{/if}
+
 </div>
-<?php } ?>
  </div> 
         <footer id="footer" class="top-space">
 
