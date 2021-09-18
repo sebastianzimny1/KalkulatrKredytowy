@@ -1,27 +1,4 @@
-<?php
-/* Smarty version 3.1.30, created on 2021-09-18 12:11:27
-  from "D:\Programy\Xamp\htdocs\KalkulatorKredytowy\app\calc_credit_view.tpl" */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.30',
-  'unifunc' => 'content_6145bb4f16da60_48867394',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    'f8e06cf7cb5ff0cc9eee110fabb07e393e836b7d' => 
-    array (
-      0 => 'D:\\Programy\\Xamp\\htdocs\\KalkulatorKredytowy\\app\\calc_credit_view.tpl',
-      1 => 1631959870,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_6145bb4f16da60_48867394 (Smarty_Internal_Template $_smarty_tpl) {
-echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>';?>
+<?php require_once dirname(__FILE__) .'/../config.php';?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
@@ -29,14 +6,10 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
     <title>Kalkulatory</title>
 
     <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
- ../lib/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
- ../lib/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
- ../lib/assets/css/bootstrap-theme.css" media="screen" >
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
- ../lib/assets/css/main.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/bootstrap-theme.css" media="screen" >
+    <link rel="stylesheet" href="{$conf->app_url} ../lib/assets/css/main.css">
             
 
 </head>
@@ -46,20 +19,12 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                                <a class="navbar-brand" href="index.html"><p>Kalkulatory</p></a>
+                                <a class="navbar-brand" href="{$conf->action_url}"><p>Kalkulatory</p></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
-						</ul>
-					</li>
-					<li><a href="contact.html">Contact</a></li>					
+                                    <li><a href="{$conf->action_url}">Strona Główna</a></li>
+                                    <li class="active"><a href="{$conf->action_url}calcView">Kalkulator Kredytowy</a></li>			
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -77,15 +42,13 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
 	<!-- /Header -->
         <!-- Intro -->
 	<div class="container text-center">
-            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
+            <form action="{$conf->action_root}calcCompute" method="post" class="pure-form pure-form-stacked">
             <h2>Kalkulator kredytowy</h2>	
                 <div class="row">
                     <div class="col-sm-4">
                         <label for="id_x">Kwota: </label>
                         <br></br>
-                        <input id="id_x" type="text" name="x" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->x;?>
-" />
+                        <input id="id_x" type="text" name="x" value="{$form->x}" />
                     </div>
                     <div class="col-sm-4">
                         <label for="id_op">Oprocentowanie: </label>
@@ -101,8 +64,7 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
                     <div class="col-sm-4">
                         <label for="id_y">Długość spłaty w miesiącach: </label>     
                         <br></br>
-                        <input id="id_y" type="text" name="y" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->y;?>
-" />
+                        <input id="id_y" type="text" name="y" value="{$form->y}" />
                     </div>
                     </div>
                     <div class="row">
@@ -113,53 +75,36 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
             </form>	
 <div class="messages">
 
-
-<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isError()) {?>
+{* wyświeltenie listy błędów, jeśli istnieją *}
+{if $msgs->isError()}
 	<h4>Wystąpiły błędy: </h4>
 	<ol class="err">
-	<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getErrors(), 'err');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['err']->value) {
-?>
-	<li><?php echo $_smarty_tpl->tpl_vars['err']->value;?>
-</li>
-	<?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
-
+	{foreach $msgs->getErrors() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
 	</ol>
-<?php }?>
+{/if}
 
-
-<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isInfo()) {?>
+{* wyświeltenie listy informacji, jeśli istnieją *}
+{if $msgs->isInfo()}
 	<h4>Informacje: </h4>
 	<ol class="inf">
-	<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getInfos(), 'inf');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['inf']->value) {
-?>
-	<li><?php echo $_smarty_tpl->tpl_vars['inf']->value;?>
-</li>
-	<?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
-
+	{foreach $msgs->getInfos() as $inf}
+	{strip}
+		<li>{$inf}</li>
+	{/strip}
+	{/foreach}
 	</ol>
-<?php }?>
+{/if}
 
-<?php if (isset($_smarty_tpl->tpl_vars['res']->value->result)) {?>
+{if isset($res->result)}
 	<h4>Wynik</h4>
 	<p class="res">
-	<?php echo $_smarty_tpl->tpl_vars['res']->value->result;?>
-
+	{$res->result}
 	</p>
-<?php }?>
+{/if}
 
 </div>
  </div> 
@@ -228,5 +173,4 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 	</footer>	
 </body>
-</html><?php }
-}
+</html>

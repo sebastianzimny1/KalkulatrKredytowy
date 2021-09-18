@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-09-16 23:05:52
+/* Smarty version 3.1.30, created on 2021-09-18 12:11:31
   from "D:\Programy\Xamp\htdocs\KalkulatorKredytowy\app\calc_credit_view.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_6143b1b07916d2_78948216',
+  'unifunc' => 'content_6145bb53a752a7_04535087',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8e06cf7cb5ff0cc9eee110fabb07e393e836b7d' => 
     array (
       0 => 'D:\\Programy\\Xamp\\htdocs\\KalkulatorKredytowy\\app\\calc_credit_view.tpl',
-      1 => 1631826313,
+      1 => 1631959870,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6143b1b07916d2_78948216 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6145bb53a752a7_04535087 (Smarty_Internal_Template $_smarty_tpl) {
 echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>';?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
@@ -77,30 +77,42 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
 	<!-- /Header -->
         <!-- Intro -->
 	<div class="container text-center">
-<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
-        <h2>Kalkulator kredytowy</h2>	
-        <br></br>
-        <fieldset>
-            <label for="id_x">Kwota: </label>
-            <input id="id_x" type="text" name="x" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->x;?>
-" /><br />
-            <label for="id_op">Oprocentowanie: </label>
-            <select name="op">
-                    <option value="1%">1%</option>
-                    <option value="2%">2%</option>
-                    <option value="3%">3%</option>
-                    <option value="5%">5%</option>
-                    <option value="10%">10%</option>
-	<</select><br />
-	<label for="id_y">Długość spłaty w miesiącach: </label>
-	<input id="id_y" type="text" name="y" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->x;?>
-" /><br />
-	</fieldset>
-            <br></br>
-        <input type="submit" value="Oblicz" />
-</form>	
-  <div class="messages">
+            <h2>Kalkulator kredytowy</h2>	
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="id_x">Kwota: </label>
+                        <br></br>
+                        <input id="id_x" type="text" name="x" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->x;?>
+" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="id_op">Oprocentowanie: </label>
+                        <br></br>
+                            <select name="op">
+                                    <option value="1%">1%</option>
+                                    <option value="2%">2%</option>
+                                    <option value="3%">3%</option>
+                                    <option value="5%">5%</option>
+                                    <option value="10%">10%</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="id_y">Długość spłaty w miesiącach: </label>     
+                        <br></br>
+                        <input id="id_y" type="text" name="y" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->y;?>
+" />
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-top: 50px;">
+                            <input type="submit" value="Oblicz" />  
+                        </div>
+                    </div>
+            </form>	
+<div class="messages">
+
 
 <?php if ($_smarty_tpl->tpl_vars['msgs']->value->isError()) {?>
 	<h4>Wystąpiły błędy: </h4>
@@ -148,6 +160,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 	</p>
 <?php }?>
+
 </div>
  </div> 
         <footer id="footer" class="top-space">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-09-18 12:11:27
-  from "D:\Programy\Xamp\htdocs\KalkulatorKredytowy\app\calc_credit_view.tpl" */
+/* Smarty version 3.1.30, created on 2021-09-18 12:46:28
+  from "D:\Programy\Xamp\htdocs\KalkulatorKredytowy\app\CalcCredit\calc_credit_view.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_6145bb4f16da60_48867394',
+  'unifunc' => 'content_6145c3847fc945_95661686',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'f8e06cf7cb5ff0cc9eee110fabb07e393e836b7d' => 
+    'cd45c0f8c3aff1cf46b6d7f0ae437932598f584d' => 
     array (
-      0 => 'D:\\Programy\\Xamp\\htdocs\\KalkulatorKredytowy\\app\\calc_credit_view.tpl',
-      1 => 1631959870,
+      0 => 'D:\\Programy\\Xamp\\htdocs\\KalkulatorKredytowy\\app\\CalcCredit\\calc_credit_view.tpl',
+      1 => 1631961964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6145bb4f16da60_48867394 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6145c3847fc945_95661686 (Smarty_Internal_Template $_smarty_tpl) {
 echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>';?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
@@ -46,20 +46,15 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                                <a class="navbar-brand" href="index.html"><p>Kalkulatory</p></a>
+                                <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+"><p>Kalkulatory</p></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
-						</ul>
-					</li>
-					<li><a href="contact.html">Contact</a></li>					
+                                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+">Strona Główna</a></li>
+                                    <li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+calcView">Kalkulator Kredytowy</a></li>			
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -77,8 +72,8 @@ echo '<?php ';?>require_once dirname(__FILE__) .'/../config.php';<?php echo '?>'
 	<!-- /Header -->
         <!-- Intro -->
 	<div class="container text-center">
-            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/app/calc_credit.php" method="post" class="pure-form pure-form-stacked">
+            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+calcCompute" method="post" class="pure-form pure-form-stacked">
             <h2>Kalkulator kredytowy</h2>	
                 <div class="row">
                     <div class="col-sm-4">
