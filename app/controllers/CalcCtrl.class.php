@@ -2,8 +2,12 @@
 // W skrypcie definicji kontrolera nie trzeba dołączać problematycznego skryptu config.php,
 // ponieważ będzie on użyty w miejscach, gdzie config.php zostanie już wywołany.
 
-require_once 'CalcForm.class.php';
-require_once 'CalcResult.class.php';
+namespace app\controllers;
+
+//zamieniamy zatem 'require' na 'use' wskazując jedynie przestrzeń nazw, w której znajduje się klasa
+
+use app\forms\CalcForm;
+use app\transfer\CalcResult;
 
 class CalcCtrl {
 

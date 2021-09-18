@@ -1,4 +1,4 @@
-<?php
+<?php namespace core;
 class Config{
 	public $root_path;
 	public $server_name;
@@ -8,4 +8,3 @@ class Config{
         public $action_root;
         public $action_url;
 }
-?>

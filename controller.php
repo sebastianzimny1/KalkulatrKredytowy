@@ -10,21 +10,18 @@ require_once 'init.php';
 switch ($action) {
 	default : // 'strona domowa'
 	    // załaduj definicję kontrolera
-                include_once 'app/controllers/HomeController.class.php';
-                $controller = new HomeController ();
+              $controller = new app\controllers\HomeController ();
 		$controller->generateView ();
 	break;
         case 'calcView' :
-                include_once 'app/controllers/CalcCtrl.class.php';
 		// utwórz obiekt i uzyj
-		$controller = new CalcCtrl ();
+		$controller = new app\controllers\CalcCtrl ();
 		$controller->generateView ();
         break;
 	case 'calcCompute' :
-		// załaduj definicję kontrolera
-		include_once 'app/controllers/CalcCtrl.class.php';
+
 		// utwórz obiekt i uzyj
-		$controller = new CalcCtrl ();
+                $controller = new app\controllers\CalcCtrl ();
 		$controller->process ();
 	break;
 
