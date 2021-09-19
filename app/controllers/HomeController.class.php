@@ -9,5 +9,7 @@ class HomeController{
             getSmarty()->assign('user',unserialize($_SESSION['user']));
             getSmarty()->display('Home_view.tpl');
        }
-
+        public function action_homeShow(){
+                        $this->generateView();
+	}
 }

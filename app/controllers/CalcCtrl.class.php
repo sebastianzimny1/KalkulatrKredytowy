@@ -76,9 +76,9 @@ class CalcCtrl {
 	/** 
 	 * Pobranie wartości, walidacja, obliczenie i wyświetlenie
 	 */
-	public function process(){
+	public function action_calcCompute(){
 
-		$this->getparams();
+		$this->getParams();
 		
 		if ($this->validate()) {
 				
@@ -89,31 +89,31 @@ class CalcCtrl {
 				
 			//wykonanie operacji
 			switch ($this->form->op) {
-                            case '1%' :                
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.01;
-                                    $this->result->result=round($this->result->result,2);
-                                    break;
-                            case '2%' :
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.02;
-                                    $this->result->result = round($this->result->result,2);
-                                    break;
-                            case '3%' :
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.03;
-                                    $this->result->result = round($this->result->result,2);
-                                    break;
-                            case '5%' :
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.05;
-                                    $this->result->result = round($this->result->result,2);
-                                    break;
-                            case '10%' :
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.10;
-                                    $this->result->result = round($this->result->result,2);
-                                    break;    
-                            default :
-                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.01;
-                                    $this->result->result = round($this->result->result,2);
-                                    break;
-                        }
+				case 'minus' :
+					if (inRole('admin')) {
+						$this->result->result = $this->form->x - $this->form->y;
+						$this->result->op_name = '-';
+					} else {
+						getMessages()->addError('Tylko administrator może wykonać tę operację');
+					}
+					break;
+				case 'times' :
+					$this->result->result = $this->form->x * $this->form->y;
+					$this->result->op_name = '*';
+					break;
+				case 'div' :
+					if (inRole('admin')) {
+						$this->result->result = $this->form->x / $this->form->y;
+						$this->result->op_name = '/';
+					} else {
+						getMessages()->addError('Tylko administrator może wykonać tę operację');
+					}
+					break;
+				default :
+					$this->result->result = $this->form->x + $this->form->y;
+					$this->result->op_name = '+';
+					break;
+			}
 			
 			getMessages()->addInfo('Wykonano obliczenia.');
 		}
@@ -121,14 +121,20 @@ class CalcCtrl {
 		$this->generateView();
 	}
 	
+	public function action_calcShow(){
+		$this->generateView();
+	}
 	
 	/**
 	 * Wygenerowanie widoku
 	 */
 	public function generateView(){
-                getSmarty()->assign('user',unserialize($_SESSION['user']));				
+                getSmarty()->assign('user',unserialize($_SESSION['user']));
+                getSmarty()->assign('page_title','Super kalkulator - role');
 		getSmarty()->assign('form',$this->form);
 		getSmarty()->assign('res',$this->result);		
 		getSmarty()->display('calc_credit_view.tpl');
 	}
 }
+	
+

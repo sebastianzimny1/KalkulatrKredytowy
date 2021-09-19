@@ -19,12 +19,12 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                                <a class="navbar-brand" href="{$conf->action_url}"><p>Kalkulatory</p></a>
+                                <a class="navbar-brand" href="{$conf->action_url}calcShow"><p>Kalkulatory</p></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-                                    <li><a href="{$conf->action_url}">Strona Główna</a></li>
-                                    <li class="active"><a href="{$conf->action_url}calcView">Kalkulator Kredytowy</a></li>			
+                                    <li><a href="{$conf->action_url}homeShow">Strona Główna</a></li>
+                                    <li class="active"><a href="{$conf->action_url}calcShow">Kalkulator Kredytowy</a></li>			
 				</ul>
 			</div><!--/.nav-collapse -->
                            <div class="row">

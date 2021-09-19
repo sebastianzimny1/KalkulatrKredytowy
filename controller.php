@@ -22,18 +22,13 @@ require_once 'init.php';
 // - akcje publiczne nie wymagają podania roli w funkcji 'control'
 // - akcje niepubliczne - wymagające posiadania roli - posiadają tablicę dopuszczonych ról w ostatnim parametrze
 
-getConf()->login_action = 'login'; //określenie akcji logowania - robimy to w tym miejscu, ponieważ tu są zdefiniowane wszystkie akcje
- 
-switch ($action) {
-	default : // 'strona domowa'
-                 control('app\\controllers', 'HomeController', 'generateView', ['user', 'admin']);
-        case 'login': 
-		control('app\\controllers', 'LoginCtrl', 'doLogin');
-        case 'calcView' :
-                control('app\\controllers', 'CalcCtrl', 'generateView', ['user','admin'] );
-	case 'calcCompute' :
-                control(null, 'CalcCtrl', 'process', ['user','admin']);
-        case 'logout' : 
-		control(null, 'LoginCtrl', 'doLogout', ['user','admin']);
- 
-}
+getRouter()->setDefaultRoute('homeShow'); // akcja/ścieżka domyślna
+getRouter()->setLoginRoute('login'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
+
+getRouter()->addRoute('calcShow',    'CalcCtrl',  ['user','admin']);
+getRouter()->addRoute('homeShow',    'HomeController',  ['user','admin']);
+getRouter()->addRoute('calcCompute', 'CalcCtrl',  ['user','admin']);
+getRouter()->addRoute('login',       'LoginCtrl');
+getRouter()->addRoute('logout',      'LoginCtrl', ['user','admin']);
+
+getRouter()->go(); //wybiera i uruchamia odpowiednią ścieżkę na podstawie parametru 'action';
