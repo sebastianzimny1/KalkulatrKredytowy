@@ -27,9 +27,11 @@
                                           <li><a href="{$conf->action_url}calcView">Kalkulator Kredytowy</a></li>								
 				</ul>
 			</div><!--/.nav-collapse -->
-                        <div class="row">
-                            <p><a href="{$conf->action_url}logout" class="btn btn-default btn-lg" role="button">wyloguj</a></p>
-                            <span style="float:right;">użytkownik: {$user->login}, rola: {$user->role}</span>
+                      <div class="row">
+                            
+                            <span style="float:right;color: white;">użytkownik: {$user->login}, rola: {$user->role}
+                                <p><a href="{$conf->action_url}logout" class="btn btn-default btn-lg" role="button">wyloguj</a></p>
+                            </span>
                         </div>
 		</div>
 	</div> 
