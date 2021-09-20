@@ -89,31 +89,31 @@ class CalcCtrl {
 				
 			//wykonanie operacji
 			switch ($this->form->op) {
-				case 'minus' :
-					if (inRole('admin')) {
-						$this->result->result = $this->form->x - $this->form->y;
-						$this->result->op_name = '-';
-					} else {
-						getMessages()->addError('Tylko administrator może wykonać tę operację');
-					}
-					break;
-				case 'times' :
-					$this->result->result = $this->form->x * $this->form->y;
-					$this->result->op_name = '*';
-					break;
-				case 'div' :
-					if (inRole('admin')) {
-						$this->result->result = $this->form->x / $this->form->y;
-						$this->result->op_name = '/';
-					} else {
-						getMessages()->addError('Tylko administrator może wykonać tę operację');
-					}
-					break;
-				default :
-					$this->result->result = $this->form->x + $this->form->y;
-					$this->result->op_name = '+';
-					break;
-			}
+                            case '1%' :                
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.01;
+                                    $this->result->result=round($this->result->result,2);
+                                    break;
+                            case '2%' :
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.02;
+                                    $this->result->result = round($this->result->result,2);
+                                    break;
+                            case '3%' :
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.03;
+                                    $this->result->result = round($this->result->result,2);
+                                    break;
+                            case '5%' :
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.05;
+                                    $this->result->result = round($this->result->result,2);
+                                    break;
+                            case '10%' :
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.10;
+                                    $this->result->result = round($this->result->result,2);
+                                    break;    
+                            default :
+                                    $this->result->result = ($this->form->x / $this->form->y)+($this->form->x / $this->form->y) * 0.01;
+                                    $this->result->result = round($this->result->result,2);
+                                    break;
+                        }
 			
 			getMessages()->addInfo('Wykonano obliczenia.');
 		}
