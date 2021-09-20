@@ -83,7 +83,7 @@ class CalcCtrl {
 		if ($this->validate()) {
 				
 			//konwersja parametrów na int
-			$this->form->x = intval($this->form->x);
+			$this->form->x = floatval($this->form->x);
 			$this->form->y = intval($this->form->y);
 			getMessages()->addInfo('Parametry poprawne.');
 				
@@ -116,6 +116,39 @@ class CalcCtrl {
                         }
 			
 			getMessages()->addInfo('Wykonano obliczenia.');
+                        
+                        try{
+                            $database = new \Medoo\Medoo([
+
+                                'type' => 'mysql',
+                                'host' => 'localhost',
+                                'database' => 'KalkulatorKredytowy',
+                                'username' => 'root',
+                                'password' => '',
+
+                                'charset' => 'utf8',
+                                'collation' => 'utf8_polish_ci',
+                                'port' => 3306,
+
+                                'option' => [
+                                        \PDO::ATTR_CASE => \PDO::CASE_NATURAL,
+                                        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+                                ],
+
+                            ]);
+                            /**
+                            * ustwiaenia bazy danych
+                            */
+                            $database->insert("obliczenia", [
+                                "kwota" => $this->form->x,
+                                "okres_splaty" => $this->form->y,
+                                "procent" => $this->form->op,
+                                "rata" => $this->result->result,
+                                "data" => date("Y-m-d H:i:s")
+                                ]);
+                        } catch (\PDOException $ex) {
+                            getMessages()->addError("DB Error: ".$ex->getMessage());
+                        }
 		}
 		
 		$this->generateView();
@@ -130,7 +163,6 @@ class CalcCtrl {
 	 */
 	public function generateView(){
                 getSmarty()->assign('user',unserialize($_SESSION['user']));
-                getSmarty()->assign('page_title','Super kalkulator - role');
 		getSmarty()->assign('form',$this->form);
 		getSmarty()->assign('res',$this->result);		
 		getSmarty()->display('calc_credit_view.tpl');
